@@ -18,8 +18,8 @@ ThemeData buildTheme(Brightness brightness) {
     backgroundColor = Colors.green[100]!;
     primaryColor = Colors.green;
     accentColor = Colors.green[900]!;
-    textColor = Colors.green[700]!;
-    headerTextColor = Colors.lightGreen[50]!;
+    textColor = Colors.green[700]!; // Textos en los Dialor y en el final de las Rows
+    headerTextColor = Colors.lightGreen[50]!; // Header de los Dialogs
   }
 
   theme = theme.copyWith(
@@ -37,11 +37,14 @@ ThemeData buildTheme(Brightness brightness) {
       ),
     ),
     textTheme: theme.textTheme.copyWith(
+      bodyText1: theme.textTheme.bodyText1?.copyWith(
+        color: Colors.green[900], // text color of dialog text
+      ),
       bodyText2: theme.textTheme.bodyText2?.copyWith(
         color: textColor, // text color of dialog text
       ),
       button: theme.textTheme.button?.copyWith(
-        color: textColor, // text color of the action bar buttons
+        color: textColor, // text color of the action bar buttons v.gr. Cancel y OK
       ),
     ),
     timePickerTheme: theme.timePickerTheme.copyWith(

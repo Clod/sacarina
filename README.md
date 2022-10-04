@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+
+flutter build apk --split-per-abi
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
