@@ -8,7 +8,7 @@ import 'package:flutter_material_pickers/interfaces/common_dialog_properties.dar
 
 // copied from flutter calendar picker
 const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
-const double alturaEncabezado = 100.0;
+const double alturaEncabezado = 130.0;
 
 /// This is a support widget that returns an Dialog with checkboxes as a Widget.
 /// It is designed to be used in the showDialog method of other fields.
@@ -86,25 +86,28 @@ class _ResponsiveDialogLocalState extends State<ResponsiveDialogLocal> {
           : null,
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               widget.superTitle,
               style: TextStyle(
                 fontSize: 15,
+                fontWeight: FontWeight.bold,
                 color: _headerTextColor,
               ),
             ),
+            SizedBox(height: 3.0,),
             Text(
               widget.title!,
               style: TextStyle(
-                fontSize: 10.0,
+                fontSize: 12.0,
                 color: _headerTextColor,
               ),
             ),
           ],
         ),
       ),
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(15.0),
     );
   }
 

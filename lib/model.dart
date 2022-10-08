@@ -30,7 +30,8 @@ class Modelo {
   PickerModel selecDieta = valorInicial;
   // PickerModel selecDieta = PickerModel('algo', code: 33.0);
   String botonDieta = "Dieta";
-  String tituloDieta = "Dieta";
+  // String tituloDieta = "Ingesta diaria informada estilo DASH (Dietary Approaches to Stop Hypertension)";
+  String tituloDieta = "Ingesta diaria informada estilo DASH (Dietary Approaches to Stop Hypertension)";
   setSelectedDieta(PickerModel sd) {
     selecDieta = sd;
   }
@@ -44,20 +45,20 @@ class Modelo {
   ];
   PickerModel selecMasaCorporal = valorInicial;
   // PickerModel selecMasaCorporal = const PickerModel('algo', code: '22.0');
-  String botonMasaCorporal = "Índice masa corporal";
-  String tituloMasaCorporal = "Índice de masa corporal";
+  String botonMasaCorporal = "Índice de masa corporal";
+  String tituloMasaCorporal = "Peso corporal en kg dividido por el cuadrado de la altura en metros ";
   setMasaCorporal(PickerModel mc) {
     selecMasaCorporal = mc;
   }
 
   // Actividad física
   static const List<PickerModel> actividadFisica = <PickerModel>[
-    PickerModel('Más de 420', code: 100.0),
-    PickerModel('Entre 360 y 419', code: 90.0),
-    PickerModel('Entre 300 y 359', code: 80.0),
-    PickerModel('Entre 240 y 299', code: 60.0),
-    PickerModel('Entre 120 y 239', code: 40.0),
-    PickerModel('Entre 1 y 119', code: 20.0),
+    PickerModel('420 minutos o más', code: 100.0),
+    PickerModel('Entre 360 y 419 min.', code: 90.0),
+    PickerModel('Entre 300 y 359 min.', code: 80.0),
+    PickerModel('Entre 240 y 299 min.', code: 60.0),
+    PickerModel('Entre 120 y 239 min.', code: 40.0),
+    PickerModel('Entre 1 y 119 min.', code: 20.0),
     PickerModel('Sin actividad', code: 0.0),
   ];
   PickerModel selecActividadFisica = valorInicial;
@@ -71,16 +72,16 @@ class Modelo {
 
   // Sueño
   static const List<PickerModel> sueno = <PickerModel>[
-    PickerModel('Rango óptimo por edad', code: 100.0),
+    PickerModel('Dentro del rango óptimo por edad', code: 100.0),
     PickerModel('Menos que una hora más que lo óptimo', code: 90.0),
     PickerModel('Menos que una hora menos que lo óptimo', code: 70.0),
-    PickerModel('Una a dos horas menos o una más', code: 40.0),
+    PickerModel('Una a dos horas menos o una más que lo óptimo', code: 40.0),
     PickerModel('Dos a tres horas menos que lo óptimo', code: 20.0),
     PickerModel('Tres o más horas menos que lo óptimo', code: 0.0),
   ];
   PickerModel selecSueno = valorInicial;
   String botonSueno = "Sueño";
-  String tituloSueno = "Horas de sueño prom.";
+  String tituloSueno = "Horas de sueño promedio por noche.";
   setSueno(PickerModel su) {
     selecSueno = su;
   }
@@ -89,13 +90,16 @@ class Modelo {
   // Fumar
   static const List<PickerModel> fumar = <PickerModel>[
     PickerModel('Nunca fumó', code: 100.0),
-    PickerModel('Fumó hace más de 30 días', code: 50.0),
+    PickerModel('Nunca fumó pero convive con un fumador', code: 80.0),
+    PickerModel('Consumió nicotina hace más de 30 días', code: 50.0),
+    PickerModel('Consumió nicotina hace más de 30 días y convive con un fumador', code: 30.0),
     PickerModel('Actualmente inhala NDS', code: 25.0),
+    PickerModel('Actualmente inhala NDS y convive con un fumador', code: 25.0),
     PickerModel('Fuma actualmente', code: 0.0),
   ];
   PickerModel selecFumar = valorInicial;
-  String botonFumar = "Fumar";
-  String tituloFumar = "Actividad fumadora";
+  String botonFumar = "Exposición a la nicotina";
+  String tituloFumar = "Uso de cigarrillos o NDS inhalados o exposición pasiva";
   // String tituloFumar = "Minutos semanales de actividad física";
   setFumar(PickerModel fu) {
     selecFumar = fu;
@@ -113,8 +117,8 @@ class Modelo {
     PickerModel('Diabetes con HbA1c mayor o igual a 10', code: 0.0),
   ];
   PickerModel selecDiabetes = valorInicial;
-  String botonDiabetes = "Diabetes";
-  String tituloDiabetes = "Diabetes";
+  String botonDiabetes = "Glucosa en sangre";
+  String tituloDiabetes = "Evaluación de FBG (mg/dL) o HbA1c (%) a cualquier edad basada en síntomas o, para mayores de 10 años o al inicio de la pubertad";
   setDiabetes(PickerModel af) {
     selecDiabetes = af;
   }
@@ -123,14 +127,18 @@ class Modelo {
   // Presión arterial
   static const List<PickerModel> presionArterial = <PickerModel>[
     PickerModel('Óptima (Percentilo < 90)', code: 100.0),
+    PickerModel('Óptima (Percentilo < 90) (medicado)', code: 80.0),
     PickerModel('Elevada (menor entre Perc 90 a 95 y >= 120/8 a Perc <95 )', code: 75.0),
+    PickerModel('Elevada (menor entre Perc 90 a 95 y >= 120/8 a Perc <95 ) (medicado)', code: 55.0),
     PickerModel('Hiper. 1: menor entre Perc >= 95 + 12 ó 130/80 a 139/89', code: 50.0),
+    PickerModel('Hiper. 1: menor entre Perc >= 95 + 12 ó 130/80 a 139/89(medicado)', code: 30.0),
     PickerModel('Hiper. 2: menor entre Perc >= 95 + 12 ó >= 140/90', code: 25.0),
+    PickerModel('Hiper. 2: menor entre Perc >= 95 + 12 ó >= 140/90 (medicado)', code: 5.0),
     PickerModel('Sistólica >= 160 o Perc >= 95', code: 0.0),
   ];
   PickerModel selecPresionArterial = valorInicial;
   String botonPresionArterial = "Presión arterial";
-  String tituloPresionArterial = "Presión arterial";
+  String tituloPresionArterial = "Percentilos de presión arterial sistólica y diastólica (mm Hg) hasta 12 años. Para 13 o más usar score de adultos";
   setPresionArterial(PickerModel af) {
     selecPresionArterial = af;
   }
@@ -147,7 +155,7 @@ class Modelo {
   ];
   PickerModel selecColesterol = valorInicial;
   String botonColesterol = "Colesterol";
-  String tituloColesterol = "Colesterol no HDL";
+  String tituloColesterol = "Colesterol no HDL (mg/dL) comenzando no después de los 9 a 11 años o antes según criterio médico.";
   // String tituloColesterol = "Minutos semanales de actividad física";
   setColesterol(PickerModel af) {
     selecColesterol = af;

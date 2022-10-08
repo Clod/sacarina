@@ -1,13 +1,20 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
-// import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:sacarina/pretty_gauge.dart';
 import 'package:sacarina/show_radio_picker_local.dart';
 import 'package:sacarina/theme.dart';
 import 'model.dart';
 
-void main() {
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -55,7 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Center(
             child: Text(
           widget.title,
-          style: const TextStyle(fontSize: 14),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         )),
       ),
       body: SafeArea(
@@ -67,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonDieta,
+                Colors.red,
                 model.tituloDieta,
                 Modelo.dieta,
                 model.selecDieta,
@@ -76,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                   context,
                   model.botonActividadFisica,
+                  Colors.red,
                   model.tituloActividadFisica,
                   Modelo.actividadFisica,
                   model.selecActividadFisica,
@@ -84,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                   context,
                   model.botonMasaCorporal,
+                  Colors.red,
                   model.tituloMasaCorporal,
                   Modelo.masaCorporal,
                   model.selecMasaCorporal,
@@ -92,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonSueno,
+                Colors.red,
                 model.tituloSueno,
                 Modelo.sueno,
                 model.selecSueno,
@@ -101,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonFumar,
+                Colors.blue,
                 model.tituloFumar,
                 Modelo.fumar,
                 model.selecFumar,
@@ -110,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonDiabetes,
+                Colors.blue,
                 model.tituloDiabetes,
                 Modelo.diabetes,
                 model.selecDiabetes,
@@ -119,6 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonPresionArterial,
+                Colors.blue,
                 model.tituloPresionArterial,
                 Modelo.presionArterial,
                 model.selecPresionArterial,
@@ -128,82 +145,69 @@ class _MyHomePageState extends State<MyHomePage> {
               armarRow(
                 context,
                 model.botonColesterol,
+                Colors.blue,
                 model.tituloColesterol,
                 Modelo.colesterol,
                 model.selecColesterol,
                 model.setColesterol,
               ),
               const Expanded(child: SizedBox(height: 5)),
-              PrettyGauge(
-                gaugeSize: 190,
-                // https://meyerweb.com/eric/tools/color-blend/#FFEB3B:4CAF50:3:rgbd
-                segments: [
-                  GaugeSegment('Low', 10, Colors.red),
-                  GaugeSegment('', 10, const Color.fromRGBO(246, 101, 55, 100)),
-                  GaugeSegment('', 10, const Color.fromRGBO(248, 134, 56, 100)),
-                  GaugeSegment('', 10, const Color.fromRGBO(251, 168, 57, 100)),
-                  GaugeSegment('', 10, const Color.fromRGBO(253, 201, 58, 100)),
-                  GaugeSegment('Medium High', 10, Colors.yellow),
-                  GaugeSegment('', 10, const Color.fromRGBO(210, 220, 64, 100)),
-                  GaugeSegment('', 10, const Color.fromRGBO(166, 205, 70, 100)),
-                  GaugeSegment('', 10, const Color.fromRGBO(121, 190, 75, 100)),
-                  GaugeSegment('High', 10, Colors.green),
-                ],
-                currentValue: _promedio,
-                //currentValue: double.parse('80'),
-                // currentValue: 42,
-                displayWidget:
-                    const Text('Score', style: TextStyle(fontSize: 16)),
+              GestureDetector(
+                onLongPress: () => setState(() {
+                  resetValues();
+                }),
+                child: PrettyGauge(
+                  gaugeSize: 190,
+                  // https://meyerweb.com/eric/tools/color-blend/#FFEB3B:4CAF50:3:rgbd
+                  segments: [
+                    GaugeSegment('Low', 10, Colors.red),
+                    GaugeSegment('', 10, const Color.fromRGBO(246, 101, 55, 100)),
+                    GaugeSegment('', 10, const Color.fromRGBO(248, 134, 56, 100)),
+                    GaugeSegment('', 10, const Color.fromRGBO(251, 168, 57, 100)),
+                    GaugeSegment('', 10, const Color.fromRGBO(253, 201, 58, 100)),
+                    GaugeSegment('Medium High', 10, Colors.yellow),
+                    GaugeSegment('', 10, const Color.fromRGBO(210, 220, 64, 100)),
+                    GaugeSegment('', 10, const Color.fromRGBO(166, 205, 70, 100)),
+                    GaugeSegment('', 10, const Color.fromRGBO(121, 190, 75, 100)),
+                    GaugeSegment('High', 10, Colors.green),
+                  ],
+                  currentValue: _promedio,
+                  //currentValue: double.parse('80'),
+                  // currentValue: 42,
+                  displayWidget:
+                      const Text('Score', style: TextStyle(fontSize: 16)),
+                ),
               ),
             ],
           ),
         ),
       ),
-/*      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), */ // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () { setState(() {
+      //     resetValues();
+      //   });},
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),  // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-//   Row buildRadioRow(BuildContext context) {
-//     return Row(
-//       children: <Widget>[
-//         SizedBox(
-//           width: 150.0,
-//           height: 30.0,
-//           child: ElevatedButton(
-//             child: const Text('Radio Picker'),
-//             onPressed: () => showMaterialRadioPicker<PickerModel>(
-//                 context: context,
-//                 title: 'Pick Your City',
-//                 items: Modelo.state,
-//                 selectedItem: model.selectedUsState,
-//                 onChanged: (value) {
-//                   debugPrint("El valor elegido es $value");
-//                   setState(() => model.selectedUsState = value);
-//                 }
-// /*
-//               onChanged: (value) =>
-//                   setState(() => model.selectedUsState = value),
-// */
-//                 ),
-//           ),
-//         ),
-//         Expanded(
-//           child: Text(
-//             '${model.selectedUsState} (${model.selectedUsState.code})',
-//             textAlign: TextAlign.right,
-//           ),
-//         ),
-//       ],
-//     );
-//   }
+  void resetValues() {
+    model.setSelectedDieta(Modelo.valorInicial);
+    model.setActividadFisica(Modelo.valorInicial);
+    model.setMasaCorporal(Modelo.valorInicial);
+    model.setSueno(Modelo.valorInicial);
+    model.setFumar(Modelo.valorInicial);
+    model.setDiabetes(Modelo.valorInicial);
+    model.setPresionArterial(Modelo.valorInicial);
+    model.setColesterol(Modelo.valorInicial);
+    _promedio = 0;
+  }
 
   Row armarRow(
     BuildContext context,
     String textoBoton,
+    Color? buttonColor,
     String tituloDialogo,
     List<PickerModel> listaOpciones,
     PickerModel seleccion,
@@ -213,12 +217,14 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         SizedBox(
           width: 150.0,
-          height: 40.0,
+          height: 35.0,
           child: ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(buttonColor)),
             child: Text(
               textoBoton,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 11.0),
+              style: const TextStyle(fontSize: 12.0),
             ),
             onPressed: () => showMaterialRadioPickerLocal<PickerModel>(
                 context: context,
