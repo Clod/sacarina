@@ -44,7 +44,7 @@ class Modelo {
   ];
   PickerModel selecMasaCorporal = valorInicial;
   // PickerModel selecMasaCorporal = const PickerModel('algo', code: '22.0');
-  String botonMasaCorporal = "Índice de masa corp.";
+  String botonMasaCorporal = "Índice masa corporal";
   String tituloMasaCorporal = "Índice de masa corporal";
   setMasaCorporal(PickerModel mc) {
     selecMasaCorporal = mc;
@@ -115,7 +115,6 @@ class Modelo {
   PickerModel selecDiabetes = valorInicial;
   String botonDiabetes = "Diabetes";
   String tituloDiabetes = "Diabetes";
-  // String tituloDiabetes = "Minutos semanales de actividad física";
   setDiabetes(PickerModel af) {
     selecDiabetes = af;
   }
@@ -139,7 +138,8 @@ class Modelo {
 
   // Colesterol
   static const List<PickerModel> colesterol = <PickerModel>[
-    PickerModel('Menos que 100', code: 100.0),
+    PickerModel('Menos que 100 sin medicación', code: 100.0),
+    PickerModel('Menos que 100 con medicación', code: 80.0),
     PickerModel('Entre 100 y 119', code: 60.0),
     PickerModel('Entre 120 y 144', code: 40.0),
     PickerModel('Entre 145 y 189', code: 20.0),

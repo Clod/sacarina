@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 // import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:sacarina/pretty_gauge.dart';
+import 'package:sacarina/show_radio_picker_local.dart';
 import 'package:sacarina/theme.dart';
 import 'model.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       dark: buildTheme(Brightness.dark),
       builder: (context, theme) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'SACARINA',
           theme: theme,
           // theme: ThemeData(
           //   primarySwatch: Colors.blue,
@@ -51,7 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(widget.title)),
+        title: Center(
+            child: Text(
+          widget.title,
+          style: const TextStyle(fontSize: 14),
+        )),
       ),
       body: SafeArea(
         child: Container(
@@ -162,39 +167,39 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Row buildRadioRow(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        SizedBox(
-          width: 150.0,
-          height: 30.0,
-          child: ElevatedButton(
-            child: const Text('Radio Picker'),
-            onPressed: () => showMaterialRadioPicker<PickerModel>(
-                context: context,
-                title: 'Pick Your City',
-                items: Modelo.state,
-                selectedItem: model.selectedUsState,
-                onChanged: (value) {
-                  debugPrint("El valor elegido es $value");
-                  setState(() => model.selectedUsState = value);
-                }
-/*
-              onChanged: (value) =>
-                  setState(() => model.selectedUsState = value),
-*/
-                ),
-          ),
-        ),
-        Expanded(
-          child: Text(
-            '${model.selectedUsState} (${model.selectedUsState.code})',
-            textAlign: TextAlign.right,
-          ),
-        ),
-      ],
-    );
-  }
+//   Row buildRadioRow(BuildContext context) {
+//     return Row(
+//       children: <Widget>[
+//         SizedBox(
+//           width: 150.0,
+//           height: 30.0,
+//           child: ElevatedButton(
+//             child: const Text('Radio Picker'),
+//             onPressed: () => showMaterialRadioPicker<PickerModel>(
+//                 context: context,
+//                 title: 'Pick Your City',
+//                 items: Modelo.state,
+//                 selectedItem: model.selectedUsState,
+//                 onChanged: (value) {
+//                   debugPrint("El valor elegido es $value");
+//                   setState(() => model.selectedUsState = value);
+//                 }
+// /*
+//               onChanged: (value) =>
+//                   setState(() => model.selectedUsState = value),
+// */
+//                 ),
+//           ),
+//         ),
+//         Expanded(
+//           child: Text(
+//             '${model.selectedUsState} (${model.selectedUsState.code})',
+//             textAlign: TextAlign.right,
+//           ),
+//         ),
+//       ],
+//     );
+//   }
 
   Row armarRow(
     BuildContext context,
@@ -215,8 +220,9 @@ class _MyHomePageState extends State<MyHomePage> {
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 11.0),
             ),
-            onPressed: () => showMaterialRadioPicker<PickerModel>(
+            onPressed: () => showMaterialRadioPickerLocal<PickerModel>(
                 context: context,
+                superTitle: textoBoton,
                 title: tituloDialogo,
                 items: listaOpciones,
                 selectedItem: seleccion,
