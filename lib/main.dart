@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           margin: const EdgeInsets.all(8.0),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               armarRow(
                 context,

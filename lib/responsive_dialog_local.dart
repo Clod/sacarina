@@ -13,6 +13,7 @@ const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
 class ResponsiveDialogLocal extends StatefulWidget
     implements ICommonDialogProperties {
   ResponsiveDialogLocal({
+    super.key,
     required this.context,
     String? title,
     Widget? child,
@@ -29,7 +30,7 @@ class ResponsiveDialogLocal extends StatefulWidget
     this.confirmText,
     this.cancelText,
   })  : title = title ?? "Title Here",
-        child = child ?? Text("Content Here"),
+        child = child ?? const Text("Content Here"),
         maxLongSide = maxLongSide ?? 600,
         maxShortSide = maxShortSide ?? 400;
 
