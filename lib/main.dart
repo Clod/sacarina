@@ -246,9 +246,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Expanded(
-          child: Text(
-            '$seleccion (${seleccion.code})',
-            textAlign: TextAlign.right,
+          child: Container(
+            height: 35,
+            child: SingleChildScrollView(
+              child: Text(
+                '$seleccion (${seleccion.code})',
+                textAlign: TextAlign.right,
+              ),
+            ),
           ),
         ),
       ],
